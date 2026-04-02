@@ -436,12 +436,13 @@
     text-transform: uppercase;
   }
 
-  /* Estilos para el selector de tamaño (Actualizado con más padding a la derecha) */
+  /* Estilos para el selector de tamaño */
   .size-selector {
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
     gap: 1rem;
+    width: 100%;
   }
 
   .size-selector label {
@@ -449,14 +450,16 @@
     color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    white-space: nowrap;
   }
 
   .size-selector select {
     flex: 1;
+    min-width: 0;
     background: var(--surface);
     border: 1px solid rgba(201, 169, 110, 0.35);
     color: var(--cream);
-    padding: 0.5rem 2.5rem 0.5rem 1rem; /* Aumentado a 2.5rem a la derecha para que no pegue con la flecha */
+    padding: 0.5rem 2.5rem 0.5rem 1rem; 
     font-family: var(--font-body);
     font-size: 0.85rem;
     cursor: pointer;
@@ -467,6 +470,9 @@
     background-repeat: no-repeat, repeat;
     background-position: right .7em top 50%, 0 0;
     background-size: .65em auto, 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .size-selector select:hover,
@@ -840,6 +846,16 @@
     .cta-inner { grid-template-columns: 1fr; gap: 2rem; }
     .menu-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
     footer { flex-direction: column; gap: 1rem; text-align: center; }
+    
+    /* FIX PARA EL SELECTOR DE TAMAÑO EN MÓVILES */
+    .size-selector {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+    .size-selector select {
+      width: 100%;
+    }
   }
 </style>
 </head>
