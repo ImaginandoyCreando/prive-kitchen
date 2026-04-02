@@ -436,6 +436,50 @@
     text-transform: uppercase;
   }
 
+  /* Estilos para el selector de tamaño */
+  .size-selector {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .size-selector label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .size-selector select {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid rgba(201, 169, 110, 0.35);
+    color: var(--cream);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23c9a96e%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.3c0%204.9%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095.2c3.6-3.6%205.4-7.8%205.4-12.9%200-5-1.8-9.3-5.4-12.9z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+  }
+
+  .size-selector select:hover,
+  .size-selector select:focus {
+    border-color: var(--gold);
+    outline: none;
+  }
+
+  .size-selector select option {
+    background: var(--card);
+    color: var(--cream);
+  }
+
   .menu-card-footer {
     display: flex;
     justify-content: space-between;
@@ -928,7 +972,7 @@
 
     <div class="menu-card">
       <div class="menu-card-img">
-        <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=700&q=80" alt="Arroz Chino">
+        <img src="arroz-chino.jpeg" alt="Arroz Chino">
         <span class="menu-card-badge">Especial</span>
       </div>
       <div class="menu-card-body">
@@ -944,9 +988,18 @@
           <span class="ingredient-tag">Pimentón</span>
           <span class="ingredient-tag">Raíces chinas</span>
         </div>
+        
+        <div class="size-selector">
+          <label for="arroz-chino-size">Tamaño:</label>
+          <select id="arroz-chino-size">
+            <option value="20000">Personal (1-2 pers.) - $20.000 COP</option>
+            <option value="35000">Familiar (3-4 pers.) - $35.000 COP</option>
+          </select>
+        </div>
+
         <div class="menu-card-footer">
-          <div class="menu-card-price">$20.000 <small>COP</small></div>
-          <button class="btn-add" onclick="addToCart('Arroz Chino', 20000)">Agregar +</button>
+          <div class="menu-card-price"><small>Desde</small> $20.000 <small>COP</small></div>
+          <button class="btn-add" onclick="addArrozChino()">Agregar +</button>
         </div>
       </div>
     </div>
@@ -978,7 +1031,7 @@
 
     <div class="menu-card">
       <div class="menu-card-img">
-        <img src="https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?w=700&q=80" alt="Arroz Vegetariano">
+        <img src="arroz-vegetariano.jpg" alt="Arroz Vegetariano">
         <span class="menu-card-badge">Nuevo</span>
       </div>
       <div class="menu-card-body">
@@ -1019,7 +1072,7 @@
           <span class="ingredient-tag">Papas Criollas</span>
         </div>
         <div class="menu-card-footer">
-          <div class="menu-card-price">$25.000 <small>COP</small></div>
+          <div class="menu-card-price">$22.000 <small>COP</small></div>
           <button class="btn-add" onclick="addToCart('Chop Suey Especial', 22000)">Agregar +</button>
         </div>
       </div>
@@ -1136,6 +1189,17 @@
 
     cartTotalEl.innerText = formatPrice(total);
     cartCountEl.innerText = count;
+  }
+
+  // Función específica para el Arroz Chino para manejar el tamaño
+  function addArrozChino() {
+    const sizeSelector = document.getElementById('arroz-chino-size');
+    const selectedOption = sizeSelector.options[sizeSelector.selectedIndex];
+    const selectedSizeName = selectedOption.text.split(' - ')[0]; // Obtiene "Personal (1-2 pers.)" o "Familiar (3-4 pers.)"
+    const selectedPrice = parseInt(selectedOption.value);
+    const finalItemName = `Arroz Chino (${selectedSizeName})`; // Nombre profesional
+
+    addToCart(finalItemName, selectedPrice);
   }
 
   function addToCart(name, price) {
