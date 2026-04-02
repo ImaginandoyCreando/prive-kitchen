@@ -437,6 +437,61 @@
 
   .btn-order:hover { color: var(--gold); border-color: var(--gold); }
 
+  /* ── ADICIONALES ── */
+  .adicionales-section {
+    max-width: 1100px;
+    margin: 2rem auto 6rem;
+    padding: 0 2rem;
+  }
+
+  .adicionales-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+  }
+
+  .adicionales-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .adicional-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+
+  .adicional-item:hover {
+    border-color: var(--gold);
+  }
+
+  .adicional-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .adicional-name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--cream);
+  }
+  
+  .adicional-price {
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+  }
+
   .cta-section {
     position: relative;
     overflow: hidden;
@@ -745,7 +800,7 @@
 
     <div class="menu-card">
       <div class="menu-card-img">
-        <img src="chop-suey.jpeg" alt="Chop Suey Especial">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=700&q=80" alt="Chop Suey Especial">
         <span class="menu-card-badge">NUEVO</span>
       </div>
       <div class="menu-card-body">
@@ -765,6 +820,29 @@
           <a href="https://wa.me/573154858802?text=Hola%20PRIV%C3%89%2C%20quiero%20pedir%20el%20Chop%20Suey%20Especial%20%F0%9F%A5%A1" class="btn-order" target="_blank">Pedir ahora →</a>
         </div>
       </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="adicionales-section">
+  <h3 class="adicionales-title">Adicionales</h3>
+  <div class="adicionales-list">
+    
+    <div class="adicional-item">
+      <div class="adicional-info">
+        <span class="adicional-name">Papas del Chef</span>
+        <span class="adicional-price">$5.000 <small>COP</small></span>
+      </div>
+      <a href="https://wa.me/573154858802?text=Hola%20PRIV%C3%89%2C%20quiero%20agregar%20unas%20Papas%20del%20Chef%20a%20mi%20pedido%20%F0%9F%8D%9F" target="_blank" class="btn-order">Agregar +</a>
+    </div>
+
+    <div class="adicional-item">
+      <div class="adicional-info">
+        <span class="adicional-name">Porción Chop Suey</span>
+        <span class="adicional-price">$8.000 <small>COP</small></span>
+      </div>
+      <a href="https://wa.me/573154858802?text=Hola%20PRIV%C3%89%2C%20quiero%20agregar%20una%20porci%C3%B3n%20extra%20de%20Chop%20Suey%20%F0%9F%A5%A1" target="_blank" class="btn-order">Agregar +</a>
     </div>
 
   </div>
